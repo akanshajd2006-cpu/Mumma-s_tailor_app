@@ -1,0 +1,30 @@
+name: mummas_tailor_hub
+description: "Mumma's Tailor Hub - Customer, order & measurement tracker with built-in chat"
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.6
+
+  # Firebase (our backend + database)
+  firebase_core: ^2.27.0
+  cloud_firestore: ^4.15.5
+
+  # Utilities
+  intl: ^0.19.0                # date formatting
+  uuid: ^4.3.3                 # generating local IDs
+  url_launcher: ^6.2.5         # optional: open real WhatsApp from a chat
+  google_fonts: ^6.2.1         # Outfit + Playfair look, matching your web app
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true

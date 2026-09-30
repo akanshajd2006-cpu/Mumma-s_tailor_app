@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "533315736129",
+    "project_id": "mumma-tailor-hub",
+    "storage_bucket": "mumma-tailor-hub.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:533315736129:android:626debdc310e912d386cc0",
+        "android_client_info": {
+          "package_name": "com.example.mummas_tailor_hub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxZICDe-bQdle7hvfSrMUvmEBJI-eX894"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
