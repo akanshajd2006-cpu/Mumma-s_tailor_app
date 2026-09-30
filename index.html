@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mumma's Tailor Hub - Custom Measurement & Order Tracker</title>
+    <!-- Google Fonts: Outfit for body, Playfair Display for headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <!-- A beautiful sewing needle passing through thread loop -->
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14.5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5.67 1.5 1.5 1.5 1.5-.67 1.5-1.5z" opacity="0.15"/>
+                    <path d="M12 3a9 9 0 0 0-9 9c0 3.5 2 6.5 4.9 8" stroke-dasharray="2 2"/>
+                    <path d="M12 21a9 9 0 0 0 9-9c0-3.9-2.5-7.2-6-8.4"/>
+                    <path d="M14.5 4.5 6 13c-.6.6-.6 1.5 0 2.1s1.5.6 2.1 0l8.5-8.5" stroke-linecap="round"/>
+                    <circle cx="15.5" cy="5.5" r="0.8" fill="currentColor"/>
+                </svg>
+                <div class="logo-text">
+                    <h1>Mumma's</h1>
+                    <span>Tailor Hub</span>
+                </div>
+            </div>
+            
+            <nav class="nav-links">
+                <button class="nav-btn active" data-tab="dashboard">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="9" rx="1" />
+                        <rect x="14" y="3" width="7" height="5" rx="1" />
+                        <rect x="14" y="12" width="7" height="9" rx="1" />
+                        <rect x="3" y="16" width="7" height="5" rx="1" />
+                    </svg>
+                    <span>Dashboard</span>
+                </button>
+                <button class="nav-btn" data-tab="orders">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="16" y1="13" x2="8" y2="13" />
+                        <line x1="16" y1="17" x2="8" y2="17" />
+                        <polyline points="10 9 9 9 8 9" />
+                    </svg>
+                    <span>Orders Tracker</span>
+                </button>
+                <button class="nav-btn" data-tab="customers">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                    <span>Customer List</span>
+                </button>
+                <button class="nav-btn accent-nav-btn" data-tab="new-order">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                    </svg>
+                    <span>New Order</span>
+                </button>
+            </nav>
+            <div class="sidebar-footer">
+                <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="5" />
+                        <line x1="12" y1="1" x2="12" y2="3" />
+                        <line x1="12" y1="21" x2="12" y2="23" />
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                        <line x1="1" y1="12" x2="3" y2="12" />
+                        <line x1="21" y1="12" x2="23" y2="12" />
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                    </svg>
+                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                    <span class="theme-text">Toggle Theme</span>
+                </button>
+            </div>
+        </aside>
+        <!-- Main Application View -->
+        <main class="main-content">
+            <header class="top-bar">
+                <div class="search-container">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8" />
+                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                    <input type="text" id="global-search" placeholder="Search customer name or phone number...">
+                    <div id="search-dropdown" class="search-dropdown hidden"></div>
+                </div>
+                <div class="user-greeting">
+                    <span class="greeting-text">Namaste, Mumma! ❤️</span>
+                </div>
+            </header>
+            <div class="content-body">
+                <!-- ================= TAB: DASHBOARD ================= -->
+                <section id="tab-dashboard" class="tab-pane active">
+                    <div class="welcome-banner">
+                        <div class="banner-text">
+                            <h2>Your Tailoring Hub</h2>
+                            <p>Here is your shop's schedule and order summaries for today.</p>
+                        </div>
+                        <div class="banner-decor">
+                            <!-- Premium sewing tape decorative drawing -->
+                            <svg viewBox="0 0 100 60" class="tape-decor">
+                                <path d="M10,30 Q30,10 50,30 T90,30" fill="none" stroke="var(--primary)" stroke-width="6" stroke-dasharray="2 2" />
+                                <circle cx="10" cy="30" r="3" fill="var(--primary)" />
+                                <circle cx="90" cy="30" r="3" fill="var(--primary)" />
+                            </svg>
+                        </div>
+                    </div>
+                    <!-- Statistics Bento Grid -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon-wrapper active-orders-bg">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+                                    <line x1="7" y1="7" x2="7.01" y2="7"/>
+                                </svg>
+                            </div>
+                            <div class="stat-data">
+                                <h3 id="stat-total-orders">0</h3>
+                                <p>Total Orders</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon-wrapper pending-sewing-bg">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10" />
+                                    <polyline points="12 6 12 12 16 14" />
+                                </svg>
+                            </div>
+                            <div class="stat-data">
+                                <h3 id="stat-pending-sewing">0</h3>
+                                <p>Pending Sewing</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon-wrapper ready-delivery-bg">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </div>
+                            <div class="stat-data">
+                                <h3 id="stat-ready-trial">0</h3>
+                                <p>Ready / In Trial</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon-wrapper pending-payment-bg">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <line x1="12" y1="1" x2="12" y2="23"/>
+                                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                                </svg>
+                            </div>
+                            <div class="stat-data">
+                                <h3 id="stat-pending-payment">₹0</h3>
+                                <p>Pending Payments</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Dashboard Sections Grid -->
+                    <div class="dashboard-details-grid">
+                        <!-- Urgent Orders Column -->
+                        <div class="details-box urgent-box">
+                            <div class="box-header">
+                                <h3>⚠️ Urgent Deliveries (Next 3 Days)</h3>
+                            </div>
+                            <div id="urgent-orders-list" class="box-content flex-list">
+                                <div class="empty-state">No urgent orders for the next 3 days! Keep it up! 🎉</div>
+                            </div>
+                        </div>
+                        <!-- Quick Tasks & Recent Actions -->
+                        <div class="details-box progress-box">
+                            <div class="box-header">
+                                <h3>📋 Quick Status Board</h3>
+                            </div>
+                            <div class="status-summary-board">
+                                <div class="status-column">
+                                    <h4>Cutting ✂️</h4>
+                                    <div id="col-cutting" class="status-cards-list"></div>
+                                </div>
+                                <div class="status-column">
+                                    <h4>Sewing 🧵</h4>
+                                    <div id="col-sewing" class="status-cards-list"></div>
+                                </div>
+                                <div class="status-column">
+                                    <h4>Ready 👗</h4>
+                                    <div id="col-ready" class="status-cards-list"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- ================= TAB: ORDERS TRACKER ================= -->
+                <section id="tab-orders" class="tab-pane">
+                    <div class="section-title">
+                        <h2>All Orders Tracker</h2>
+                        <div class="filter-bar">
+                            <button class="filter-btn active" data-filter="all">All</button>
+                            <button class="filter-btn" data-filter="Pending">Pending</button>
+                            <button class="filter-btn" data-filter="Cutting">Cutting</button>
+                            <button class="filter-btn" data-filter="Sewing">Sewing</button>
+                            <button class="filter-btn" data-filter="Ready">Ready</button>
+                            <button class="filter-btn" data-filter="Completed">Completed</button>
+                        </div>
+                    </div>
+                    <div class="orders-table-wrapper">
+                        <table class="orders-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Garment Type</th>
+                                    <th>Delivery Date</th>
+                                    <th>Workflow Status</th>
+                                    <th>Payment</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orders-list-body">
+                                <!-- Populated dynamically by JS -->
+                            </tbody>
+                        </table>
+                        <div id="orders-empty-state" class="empty-state hidden">No orders match this status.</div>
+                    </div>
+                </section>
+                <!-- ================= TAB: CUSTOMER LIST ================= -->
+                <section id="tab-customers" class="tab-pane">
+                    <div class="section-header-row">
+                        <h2>Customers Database</h2>
+                        <button class="action-btn" id="open-add-customer-modal">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                <circle cx="9" cy="7" r="4" />
+                                <line x1="19" y1="8" x2="19" y2="14" />
+                                <line x1="22" y1="11" x2="16" y2="11" />
+                            </svg>
+                            Add New Customer
+                        </button>
+                    </div>
+                    <!-- Add Customer Mini Panel (collapsible or toggled) -->
+                    <div id="add-customer-panel" class="customer-form-panel hidden-panel">
+                        <div class="panel-header">
+                            <h3>Enter Customer Details</h3>
+                            <button type="button" class="close-panel-btn" id="close-customer-panel">&times;</button>
+                        </div>
+                        <form id="new-customer-form">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="c-name">Full Name *</label>
+                                    <input type="text" id="c-name" required placeholder="e.g., Sunita Verma">
+                                </div>
+                                <div class="form-group">
+                                    <label for="c-phone">Phone Number *</label>
+                                    <input type="tel" id="c-phone" required placeholder="e.g., 9876543210">
+                                </div>
+                                <div class="form-group full-width">
+                                    <label for="c-notes">Preferences / Special Notes</label>
+                                    <textarea id="c-notes" rows="2" placeholder="Likes loose sleeves, neck should not be deep, prefers cotton lining..."></textarea>
+                                </div>
+                            </div>
+                            <div class="panel-actions">
+                                <button type="submit" class="submit-btn">Save Customer Details</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Customers Cards Grid -->
+                    <div class="customers-grid" id="customers-cards-container">
+                        <!-- Populated by JS -->
+                    </div>
+                </section>
+                <!-- ================= TAB: NEW ORDER ================= -->
+                <section id="tab-new-order" class="tab-pane">
+                    <div class="section-title">
+                        <h2>Place a New Sewing Order</h2>
+                        <p>Select customer, choose garment pattern, insert measurements, and set pricing.</p>
+                    </div>
+                    <form id="new-order-form" class="grand-order-form">
+                        <div class="order-form-grid">
+                            <!-- Column 1: Customer & Basic Details -->
+                            <div class="form-card basic-details-card">
+                                <h3>1. Customer & Bill Info</h3>
+                                <div class="form-group">
+                                    <label for="order-customer-select">Select Customer *</label>
+                                    <div class="select-with-add">
+                                        <select id="order-customer-select" required>
+                                            <option value="" disabled selected>-- Choose Customer --</option>
+                                        </select>
+                                        <button type="button" class="mini-add-btn" id="shortcut-add-customer" title="Quick Add Customer">+</button>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="order-garment">Garment Outfit Type *</label>
+                                    <select id="order-garment" required>
+                                        <option value="" disabled selected>-- Choose Dress Type --</option>
+                                        <option value="Kurti">Kurti / Suit</option>
+                                        <option value="Blouse">Blouse</option>
+                                        <option value="Salwar">Salwar / Pyjama</option>
+                                        <option value="Pant">Trousers / Pants</option>
+                                        <option value="Gown">Lehenga / Gown / Dress</option>
+                                        <option value="Shirt">Shirt / Kurta</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="order-deadline">Expected Delivery Date *</label>
+                                    <input type="date" id="order-deadline" required>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group half-width">
+                                        <label for="order-price">Total Price (₹) *</label>
+                                        <input type="number" id="order-price" min="0" required placeholder="800">
+                                    </div>
+                                    <div class="form-group half-width">
+                                        <label for="order-advance">Advance Paid (₹)</label>
+                                        <input type="number" id="order-advance" min="0" value="0" placeholder="200">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="order-notes">Garment Neck Style / Design Details</label>
+                                    <textarea id="order-notes" rows="4" placeholder="Round neck back depth 8 inch, boat neck front, puff sleeves..."></textarea>
+                                </div>
+                            </div>
+                            <!-- Column 2: Specific Measurements -->
+                            <div class="form-card measurements-card">
+                                <h3>2. Body Measurements (इंच / Inches)</h3>
+                                <div class="garment-help-banner">
+                                    <span id="garment-display-title">Please choose a Dress Type to display measurement template</span>
+                                </div>
+                                <div id="measurement-fields-container" class="measurements-input-grid">
+                                    <!-- Dynamic Inputs depending on selected Garment Type -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-submit-row">
+                            <button type="submit" class="submit-btn large-submit">Create Order & Generate Bill Card</button>
+                        </div>
+                    </form>
+                </section>
+            </div>
+        </main>
+    </div>
+    <!-- ================= MODAL: MEASUREMENT DETAIL VIEW ================= -->
+    <div id="measurement-modal" class="modal hidden">
+        <div class="modal-content glass-card">
+            <div class="modal-header">
+                <h3 id="modal-customer-name">Customer Measurements</h3>
+                <span class="close-modal" id="close-measurement-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="measurement-garment-tabs" id="modal-garment-tabs">
+                    <!-- Tab selectors generated dynamically by JS -->
+                </div>
+                <div class="measurements-display-box" id="modal-measurements-values">
+                    <!-- Values rendered here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ================= MODAL: QUICK ADD CUSTOMER ================= -->
+    <div id="quick-customer-modal" class="modal hidden">
+        <div class="modal-content glass-card mini-modal">
+            <div class="modal-header">
+                <h3>Quick Add Customer</h3>
+                <span class="close-modal" id="close-quick-modal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="quick-customer-form">
+                    <div class="form-group">
+                        <label for="quick-c-name">Full Name *</label>
+                        <input type="text" id="quick-c-name" required placeholder="e.g., Sunita Verma">
+                    </div>
+                    <div class="form-group">
+                        <label for="quick-c-phone">Phone Number *</label>
+                        <input type="tel" id="quick-c-phone" required placeholder="e.g., 9876543210">
+                    </div>
+                    <button type="submit" class="submit-btn" style="width: 100%; margin-top: 15px;">Add & Select</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
